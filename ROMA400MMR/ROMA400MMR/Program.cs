@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace ROMA400MMR
 {
@@ -19,11 +20,19 @@ namespace ROMA400MMR
             */
             AngryDoter myAngryDoter = new AngryDoter();
             myAngryDoter.name = "Arseniy";
-            myAngryDoter.Attack();
-            myAngryDoter.Move();
             
+            AngryLoler myAngryLoler = new AngryLoler();
+            myAngryLoler.name = "German";
 
-            Console.WriteLine("Doter name: " + myAngryDoter.name);
+            List<Enemy> enemies = new List<Enemy>();
+            enemies.Add(myAngryDoter);
+            enemies.Add(myAngryLoler);
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].Move();
+            }
+
             Console.ReadLine();
         }
     }
@@ -56,7 +65,17 @@ namespace ROMA400MMR
     {
         public override void Move()
         {
-            Console.Write("Angry Doter move");
+            base.Move();
+            Console.WriteLine("Angry Doter move");
+        }
+    }
+
+    class AngryLoler : Enemy
+    {
+        override public void Move()
+        {
+            base.Move();
+            Console.WriteLine("Angry Loler move");
         }
     }
 }
